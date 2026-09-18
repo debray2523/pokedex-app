@@ -26,7 +26,7 @@ pipeline {
             }
         }
         stage('Deploy to Minikube') {
-            when { branch 'main' }
+            when { expression { (env.BRANCH_NAME ?: env.GIT_BRANCH ?: '').endsWith('main') } }
             steps {
                 bat 'kubectl apply -f k8s/deployment.yaml -f k8s/service.yaml'
                 bat 'kubectl set image deployment/pokedex-app pokedex-app=%IMAGE%:%TAG%'
@@ -36,7 +36,7 @@ pipeline {
         }
     }
     post {
-        success { echo "Deployed ${IMAGE}:${TAG}. Open it with: minikube service pokedex-app-service" }
+        success { echo "Build ${IMAGE}:${TAG} passed. If deployed, open it with: minikube service pokedex-app-service" }
         failure { echo "Build failed - see the stage that went red above." }
     }
 }
