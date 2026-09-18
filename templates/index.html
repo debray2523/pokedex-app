@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Pokédex Explorer</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; color: #222; }
+    h1 { margin-bottom: 4px; }
+    .sub { color: #777; font-size: 0.9em; margin-top: 0; }
+    form { margin: 24px 0; }
+    input { padding: 10px; width: 260px; font-size: 1em; }
+    button { padding: 10px 20px; font-size: 1em; cursor: pointer; }
+    .error { color: #b00020; margin-top: 16px; }
+    .card { margin-top: 24px; padding: 20px; border: 1px solid #ddd; border-radius: 12px; display: flex; gap: 24px; }
+    .card img { width: 200px; height: 200px; object-fit: contain; }
+    .type { display: inline-block; padding: 3px 10px; border-radius: 12px; background: #eee; margin-right: 6px; font-size: 0.9em; }
+    table { border-collapse: collapse; margin-top: 10px; }
+    td { padding: 3px 12px 3px 0; }
+    .bar { display: inline-block; height: 8px; background: #4a90e2; border-radius: 4px; vertical-align: middle; }
+    footer { margin-top: 40px; color: #aaa; font-size: 0.8em; }
+  </style>
+</head>
+<body>
+  <h1>Pokédex Explorer</h1>
+  <p class="sub">Search by name or National Dex number. Data from PokéAPI.</p>
+
+  <form method="POST">
+    <input type="text" name="query" placeholder="e.g. pikachu or 25" required autofocus>
+    <button type="submit">Search</button>
+  </form>
+
+  {% if error %}<div class="error">{{ error }}</div>{% endif %}
+
+  {% if pokemon %}
+  <div class="card">
+    {% if pokemon.artwork %}<img src="{{ pokemon.artwork }}" alt="{{ pokemon.name }}">{% endif %}
+    <div>
+      <h2>#{{ pokemon.id }} {{ pokemon.name }}</h2>
+      <p>{% for t in pokemon.types %}<span class="type">{{ t }}</span>{% endfor %}</p>
+      <p><strong>Height:</strong> {{ pokemon.height_m }} m &nbsp; <strong>Weight:</strong> {{ pokemon.weight_kg }} kg</p>
+      <p><strong>Abilities:</strong> {{ pokemon.abilities | join(", ") }}</p>
+      <table>
+        {% for stat, value in pokemon.stats.items() %}
+        <tr><td>{{ stat }}</td><td>{{ value }}</td><td><span class="bar" style="width: {{ value }}px"></span></td></tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+  {% endif %}
+
+  <footer>Pokédex Explorer · version {{ version }}</footer>
+</body>
+</html>
