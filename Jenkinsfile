@@ -16,7 +16,7 @@ pipeline {
             steps { bat 'docker run --rm %IMAGE%:%TAG% python -m pytest tests -v' }
         }
         stage('Push image') {
-            when { branch 'main' }
+            when { expression { (env.BRANCH_NAME ?: env.GIT_BRANCH ?: '').endsWith('main') } }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'U', passwordVariable: 'P')]) {
                     bat 'echo %P%| docker login -u %U% --password-stdin'
