@@ -54,3 +54,7 @@ Jenkins needs: Docker Desktop running, a `dockerhub` username/token credential, 
 ## Rollback
 
     kubectl rollout undo deployment/pokedex-app
+    
+## Application output
+
+![Pokédex Explorer running on Minikube](docs/screenshots/app-output.png)
