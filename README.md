@@ -58,3 +58,7 @@ Jenkins needs: Docker Desktop running, a `dockerhub` username/token credential, 
 ## Application output
 
 ![Pokédex Explorer running on Minikube](docs/screenshots/app-output.png)
+
+## Submission document
+
+Screenshots and evidence for each rubric item: [Project1_CI_CD_Pipeline_DebendraRay.docx](docs/Project1_CI_CD_Pipeline_DebendraRay.docx)
