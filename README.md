@@ -54,7 +54,19 @@ Jenkins needs: Docker Desktop running, a `dockerhub` username/token credential, 
 ## Rollback
 
     kubectl rollout undo deployment/pokedex-app
-    
+
+## Git workflow (GitFlow)
+
+Branches on origin: `main` (production), `staging` (pre-release), `develop` (integration), `feature/*` (e.g. `feature/readme-screenshot`, `feature/show-generation`).
+
+Flow used: `feature/*` → PR into `develop` → PR `develop` → `staging` → PR `staging` → `main`.
+Merged pull requests: #1 `feature/show-generation` → `develop`, #2 `feature/readme-screenshot` → `develop`, #3 `develop` → `staging`, #4 `staging` → `main`.
+
+- Branch list: [docs/git-branches.txt](docs/git-branches.txt)
+- Commit graph: [docs/git-history.txt](docs/git-history.txt)
+
+![git branch -a](docs/screenshots/git-branches.png)
+
 ## Application output
 
 ![Pokédex Explorer running on Minikube](docs/screenshots/app-output.png)

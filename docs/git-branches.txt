@@ -1,0 +1,10 @@
+  develop
+  feature/readme-screenshot
+  feature/show-generation
+* main
+  staging
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/develop
+  remotes/origin/feature/readme-screenshot
+  remotes/origin/main
+  remotes/origin/staging

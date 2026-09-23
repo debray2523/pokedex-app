@@ -1,0 +1,16 @@
+* 589e966 (HEAD -> main, origin/staging, origin/main, origin/develop, origin/HEAD, staging, develop) Add submission document with evidence screenshots
+*   2f676ef Merge pull request #4 from debray2523/staging
+|\  
+| * 57e243c Merge pull request #3 from debray2523/develop
+|/| 
+| * b703db5 Merge pull request #2 from debray2523/feature/readme-screenshot
+|/| 
+| * 356bae8 (origin/feature/readme-screenshot, feature/readme-screenshot) Add application output screenshot to README
+|/  
+*   8c8722b Merge pull request #1 from debray2523/feature/show-generation
+|\  
+| * ce60c29 (feature/show-generation) Tweak subtitle
+| * 2b1dc1d Fix when condition on Push stage
+| * 95759f1 Make branch condition work in a single-branch pipeline job
+|/  
+* 1ecabcc Pokédex Explorer: Flask app, Dockerfile, Jenkinsfile, k8s manifests
